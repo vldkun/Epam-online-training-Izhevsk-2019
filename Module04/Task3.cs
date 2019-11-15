@@ -8,23 +8,29 @@ namespace Module04
 {
     public class Task3
     {
-        private const double Eps = 0.001;
-        public int FindIndex(double[] a)
+        private const double Eps = 0.00001;
+        public static int FindIndex(double[] array)
         {
-            if (a.Length < 3)
-                return -1;
-
-            double leftSum = a[0], rightSum = 0;
-            for (int i = 2; i < a.Length; i++)
+            if (array.Length < 3)
             {
-                rightSum += a[i];
+                return -1;
             }
-            for (int i = 2; i < a.Length - 1; i++)
+
+            double leftSum = array[0];
+            double rightSum = 0;
+            for (int i = 2; i < array.Length; i++)
+            {
+                rightSum += array[i];
+            }
+            for (int i = 1; i < array.Length - 1; i++)
             {
                 if (Math.Abs(rightSum - leftSum) < Eps)
+                {
                     return i;
-                leftSum += a[i];
-                rightSum -= a[i + 1];
+                }
+
+                leftSum += array[i];
+                rightSum -= array[i + 1];
             }
 
             return -1;

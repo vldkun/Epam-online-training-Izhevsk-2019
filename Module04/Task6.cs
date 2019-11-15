@@ -9,7 +9,7 @@ namespace Module04
 {
     public class Task6
     {
-        public ArrayList FilterDigit(ArrayList array, int filterNumber)
+        public static int[] FilterDigit(int[] array, int filterNumber)
         {
             ArrayList filteredArray = new ArrayList();
             foreach (var elem in array)
@@ -19,7 +19,9 @@ namespace Module04
                     filteredArray.Add(elem);
                 }
             }
-            return filteredArray;
+
+            int[] resultArray = (int[])filteredArray.ToArray(typeof(int));
+            return resultArray;
         }
     }
 }

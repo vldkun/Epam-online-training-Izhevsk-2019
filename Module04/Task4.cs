@@ -8,9 +8,18 @@ namespace Module04
 {
     public class Task4
     {
-        public string ConcatNoRepeats(string s1, string s2)
+        public static string ConcatNoRepeats(string str1, string str2)
         {
-            return String.Concat(s1, s2).Distinct().ToString();
+            StringBuilder resultStrSB = new StringBuilder();
+            resultStrSB.Append(str1);
+            foreach (var symbol in str2)
+            {
+                if (!str1.Contains(symbol))
+                {
+                    resultStrSB.Append(symbol);
+                }
+            }
+            return resultStrSB.ToString();
         }
     }
 }
