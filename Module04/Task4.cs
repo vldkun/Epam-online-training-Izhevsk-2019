@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace Module04
 {
+    /// <summary>
+    /// Task Izh-04-4. Basic Coding in C#. 
+    /// </summary>
     public class Task4
     {
+        /// <summary>
+        /// Сoncatenation to the first string all the characters from the second string
+        /// except characters the first string has
+        /// </summary>
         public static string ConcatNoRepeats(string str1, string str2)
         {
             StringBuilder resultStrSB = new StringBuilder();

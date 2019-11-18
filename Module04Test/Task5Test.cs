@@ -17,6 +17,7 @@ namespace Module04Test
         [TestCase(3456432, ExpectedResult = 3462345)]
         [TestCase(10, ExpectedResult = -1)]
         [TestCase(20, ExpectedResult = -1)]
+        [TestCase(997, ExpectedResult = -1)]
 
         public int CheckFindingNexBiggerNumber(int sourceNumber)
         {

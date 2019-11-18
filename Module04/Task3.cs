@@ -6,9 +6,16 @@ using System.Threading.Tasks;
 
 namespace Module04
 {
+    /// <summary>
+    /// Task Izh-04-3. Basic Coding in C#. 
+    /// </summary>
     public class Task3
     {
         private const double Eps = 0.00001;
+        /// <summary>
+        /// Finding an index of an element in the array that has equal sums of elements left and right
+        /// </summary>
+        /// <returns>If this element exists returns his index, either returns -1</returns>
         public static int FindIndex(double[] array)
         {
             if (array.Length < 3)

@@ -28,5 +28,15 @@ namespace Module04Test
 
             Assert.AreEqual(1, Task2.FindMaxElem(array2, leftIndex, rightIndex));
         }
+
+        [TestMethod]
+        public void FindMaxElem_inArray3_1returned()
+        {
+            int[] array3 = new[] {1, 1, 1, 1, 1, 1};
+            int leftIndex = 0;
+            int rightIndex = array3.Length - 1;
+
+            Assert.AreEqual(1, Task2.FindMaxElem(array3, leftIndex, rightIndex));
+        }
     }
 }
