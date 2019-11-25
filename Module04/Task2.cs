@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Module04
 {
@@ -12,9 +8,12 @@ namespace Module04
     public class Task2
     {
         /// <summary>
-        /// The recursive search of max element
-        /// Returns the max of two array halves 
+        /// The recursive search of max element.
         /// </summary>
+        /// <param name="array">The array to find max.</param>
+        /// <param name="leftIndex">Left border of searching.</param>
+        /// <param name="rightIndex">Right border of searching.</param>
+        /// <returns>Returns the max of two array halves.</returns>
         public static int FindMaxElem(int[] array, int leftIndex, int rightIndex)
         {
             if (rightIndex == leftIndex)

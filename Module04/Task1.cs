@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Module04
 {
@@ -13,12 +9,13 @@ namespace Module04
     {
         /// <summary>
         /// Inserts (j - i + 1) right bits from the second number
-        /// to bit positions from i to j in the first number 
+        /// to bit positions from i to j in the first number. 
         /// </summary>
-        /// <param name="num1">The first number</param>
-        /// <param name="num2">The second number</param>
-        /// <param name="i">The first insertion position</param>
-        /// <param name="j">The first last position</param>
+        /// <param name="num1">The first number.</param>
+        /// <param name="num2">The second number.</param>
+        /// <param name="i">The first insertion position.</param>
+        /// <param name="j">The first last position.</param>
+        /// <returns>Returns result number.</returns>
         public static int InsertNumber(int num1, int num2, int i, int j)
         {
             uint mask = 0;

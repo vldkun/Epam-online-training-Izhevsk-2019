@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Module04
 {
@@ -13,11 +9,11 @@ namespace Module04
     public class Task6
     {
         /// <summary>
-        /// Filter the array deleting all elements that hasn't certain digit
+        /// Filter the array deleting all elements that hasn't certain digit.
         /// </summary>
-        /// <param name="array">Array of int numbers</param>
-        /// <param name="filter">The digit should be in all elements of returned array</param>
-        /// <returns>Returns array those all elements contains filter</returns>
+        /// <param name="array">Array of int numbers.</param>
+        /// <param name="filter">The digit should be in all elements of returned array.</param>
+        /// <returns>Returns array those all elements contains filter.</returns>
         public static int[] FilterDigit(int[] array, int filter)
         {
             ArrayList filteredArray = new ArrayList();
@@ -29,7 +25,7 @@ namespace Module04
                 }
             }
 
-            int[] resultArray = (int[])filteredArray.ToArray(typeof(int));
+            int[] resultArray = (int[]) filteredArray.ToArray(typeof(int));
             return resultArray;
         }
     }

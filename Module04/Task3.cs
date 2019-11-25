@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Module04
 {
@@ -12,10 +8,12 @@ namespace Module04
     public class Task3
     {
         private const double Eps = 0.00001;
+
         /// <summary>
-        /// Finding an index of an element in the array that has equal sums of elements left and right
+        /// Finding an index of an element in the array that has equal sums of elements left and right.
         /// </summary>
-        /// <returns>If this element exists returns his index, either returns -1</returns>
+        /// <param name="array">The array for searching.</param>
+        /// <returns>If this element exists returns his index, either returns -1.</returns>
         public static int FindIndex(double[] array)
         {
             if (array.Length < 3)
@@ -29,6 +27,7 @@ namespace Module04
             {
                 rightSum += array[i];
             }
+
             for (int i = 1; i < array.Length - 1; i++)
             {
                 if (Math.Abs(rightSum - leftSum) < Eps)

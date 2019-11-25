@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Module04
 {
@@ -12,9 +10,12 @@ namespace Module04
     public class Task4
     {
         /// <summary>
-        /// Сoncatenation to the first string all the characters from the second string
-        /// except characters the first string has
+        /// Concatenation to the first string all the characters from the second string
+        /// except characters the first string has.
         /// </summary>
+        /// <param name="str1">The fist string.</param>
+        /// <param name="str2">The second string.</param>
+        /// <returns>Returns result concatenated string.</returns>
         public static string ConcatNoRepeats(string str1, string str2)
         {
             StringBuilder resultStrSB = new StringBuilder();
@@ -26,6 +27,7 @@ namespace Module04
                     resultStrSB.Append(symbol);
                 }
             }
+
             return resultStrSB.ToString();
         }
     }
