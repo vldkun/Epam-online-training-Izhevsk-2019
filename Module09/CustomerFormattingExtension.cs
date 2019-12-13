@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Linq;
 using System.Text;
 
 namespace Module09
@@ -12,26 +13,19 @@ namespace Module09
         /// String representation of class customer.
         /// </summary>
         /// <param name="customer">Customer to convert his properties to string.</param>
-        /// <param name="flag">Byte flag.
-        /// Left bit - name.
-        /// Middle bit - revenue.
-        /// Right bit - phone.</param>
         /// <returns>Returns string - customer's properties.</returns>
-        public static string StringRepresentation(this Customer customer, byte flag)
+        public static string StringRepresentation(this Customer customer)
         {
-            byte mask1 = 1;
-            byte mask2 = 2;
-            byte mask3 = 4;
             var strCustomerSb = new StringBuilder("Customer record:");
-            if ((flag & mask3) == mask3)
+            if (!string.IsNullOrEmpty(customer.Name))
             {
                 strCustomerSb.Append(" " + customer.Name + ",");
             }
-            if ((flag & mask2) == mask2)
+            if (!(customer.Revenue < 0))
             {
                 strCustomerSb.Append(" " + string.Format(new CultureInfo("en-US", false), "{0:N}",customer.Revenue) + ",");
             }
-            if ((flag & mask1) == mask1)
+            if (!string.IsNullOrEmpty(customer.ContactPhone))
             {
                 strCustomerSb.Append(" " + customer.ContactPhone + ",");
             }
