@@ -90,7 +90,7 @@ namespace Module06
         /// </summary>
         /// <param name="array">The array of numbers</param>
         /// <returns>Returns GCD.</returns>
-        public static int GcdEuclidArray(int[] array)
+        public static int GcdEuclid(int[] array)
         {
             if (array.Length < 2)
             {
@@ -119,7 +119,7 @@ namespace Module06
         /// </summary>
         /// <param name="array">The array of numbers</param>
         /// <returns>Returns GCD.</returns>
-        public static int GcdSteinArray(int[] array)
+        public static int GcdStein(int[] array)
         {
             if (array.Length < 2)
             {
@@ -206,13 +206,13 @@ namespace Module06
         /// </summary>
         /// <param name="array">The array of numbers</param>
         /// <returns>Returns array of computing times in ticks. First element is time of Euclidean, second is time of Stein's.</returns>
-        public static long[] MeasureRunningTimeGcdArray(int[] array)
+        public static long[] MeasureRunningTimeGcd(int[] array)
         {
             var calcTimes = new long[2];
             var watch1 = System.Diagnostics.Stopwatch.StartNew();
             for (int i = 0; i < 100; i++)
             {
-                var gcd = GcdEuclidArray(array);
+                var gcd = GcdEuclid(array);
             }
 
             watch1.Stop();
@@ -220,7 +220,7 @@ namespace Module06
             var watch2 = System.Diagnostics.Stopwatch.StartNew();
             for (int i = 0; i < 100; i++)
             {
-                var gcd = GcdSteinArray(array);
+                var gcd = GcdStein(array);
             }
 
             watch2.Stop();
@@ -233,13 +233,13 @@ namespace Module06
         /// </summary>
         /// <param name="array">The array of numbers</param>
         /// <returns>Returns array of computing times in ticks. First element is time of Euclidean, second is time of Stein's.</returns>
-        public static long[] MeasureRunningTimeGcdArray2(int[] array)
+        public static long[] MeasureRunningTimeGcd2(int[] array)
         {
             var calcTimes = new long[2];
             var startTime1 = DateTime.Now;
             for (int i = 0; i < 100; i++)
             {
-                var gcd = GcdEuclidArray(array);
+                var gcd = GcdEuclid(array);
             }
 
             var stopTime1 = DateTime.Now;
@@ -248,7 +248,7 @@ namespace Module06
             var startTime2 = DateTime.Now;
             for (int i = 0; i < 100; i++)
             {
-                var gcd = GcdSteinArray(array);
+                var gcd = GcdStein(array);
             }
 
             var stopTime2 = DateTime.Now;

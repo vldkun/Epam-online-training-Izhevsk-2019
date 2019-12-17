@@ -33,7 +33,7 @@ namespace Module06Test
         [TestCase(new int[] {0, 0, 0, 10}, ExpectedResult = 10)]
         public int CheckGcdEuclidArray(int[] array)
         {
-            return Gcd.GcdEuclidArray(array);
+            return Gcd.GcdEuclid(array);
         }
 
         [TestCase(new int[] {-9, 3, -6, 0}, ExpectedResult = 3)]
@@ -41,7 +41,7 @@ namespace Module06Test
         [TestCase(new int[] {0, 0, 0, 10}, ExpectedResult = 10)]
         public int CheckGcdSteinArray(int[] array)
         {
-            return Gcd.GcdSteinArray(array);
+            return Gcd.GcdStein(array);
         }
 
         [TestCase(0, 0)]
@@ -62,14 +62,14 @@ namespace Module06Test
         public void GcdSteinArray_CheckArgumentException(int[] array)
         {
             Assert.Throws<ArgumentException>(
-                () => Gcd.GcdSteinArray(array));
+                () => Gcd.GcdStein(array));
         }
 
         [TestCase(new int[] {0, 0, 0, 0})]
         public void GcdEuclidArray_CheckArgumentException(int[] array)
         {
             Assert.Throws<ArgumentException>(
-                () => Gcd.GcdEuclidArray(array));
+                () => Gcd.GcdEuclid(array));
         }
 
         [Test]
@@ -95,10 +95,10 @@ namespace Module06Test
         {
             var path = @"..\temp\Test2.txt";
             var array = new int[] {-1000, 1050, 2030, 2500};
-            var times1 = Gcd.MeasureRunningTimeGcdArray(array);
-            times1 = Gcd.MeasureRunningTimeGcdArray(array);
-            var times2 = Gcd.MeasureRunningTimeGcdArray2(array);
-            times2 = Gcd.MeasureRunningTimeGcdArray2(array);
+            var times1 = Gcd.MeasureRunningTimeGcd(array);
+            times1 = Gcd.MeasureRunningTimeGcd(array);
+            var times2 = Gcd.MeasureRunningTimeGcd2(array);
+            times2 = Gcd.MeasureRunningTimeGcd2(array);
             using (var sw = new StreamWriter(path))
             {
                 sw.WriteLine(times1[0] + " " + times1[1]);
