@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Countdown.cs" />
+    <Compile Include="Gcd.cs" />
     <Compile Include="Matrix.cs" />
     <Compile Include="NewCountdownEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

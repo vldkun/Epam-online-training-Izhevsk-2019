@@ -75,35 +75,67 @@ namespace Module06Test
         [Test]
         public void TestMeasuringOfComputingTimeGcd()
         {
-            var path = @"..\temp\Test1.txt";
+            var path = @"..\temp\";
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            var testFile = new FileInfo(path + "test1.txt");
+            if (!testFile.Exists)
+            {
+                testFile.Create();
+            }
+
             var a = 624129;
             var b = 2061517;
             var times1 = Gcd.MeasureRunningTimeGcd(a, b);
             times1 = Gcd.MeasureRunningTimeGcd(a, b);
             var times2 = Gcd.MeasureRunningTimeGcd2(a, b);
             times2 = Gcd.MeasureRunningTimeGcd2(a, b);
-            using (var sw = new StreamWriter(path))
+            using (var sw = new StreamWriter(testFile.FullName))
             {
-                sw.WriteLine(times1[0] + " " + times1[1]);
-                sw.WriteLine(times2[0] + " " + times2[1]);
+                sw.WriteLine("Running time of gcd method(measured by System.Diagnostics):");
+                sw.WriteLine(" Euclidean algorithm: {0,10} ticks.\n Stein's algorithm: {1,12} ticks.", times1[0],
+                    times1[1]);
+                sw.WriteLine("Running time of gcd method(measured by System.DateTime):");
+                sw.WriteLine(" Euclidean algorithm: {0,10} ticks.\n Stein's algorithm: {1,12} ticks.", times2[0],
+                    times2[1]);
             }
+
             Assert.Pass();
         }
 
         [Test]
         public void TestMeasuringOfComputingTimeGcdArray()
         {
-            var path = @"..\temp\Test2.txt";
+            var path = @"..\temp\";
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            var testFile = new FileInfo(path + "test2.txt");
+            if (!testFile.Exists)
+            {
+                testFile.Create();
+            }
+
             var array = new int[] {-1000, 1050, 2030, 2500};
             var times1 = Gcd.MeasureRunningTimeGcd(array);
             times1 = Gcd.MeasureRunningTimeGcd(array);
             var times2 = Gcd.MeasureRunningTimeGcd2(array);
             times2 = Gcd.MeasureRunningTimeGcd2(array);
-            using (var sw = new StreamWriter(path))
+            using (var sw = new StreamWriter(testFile.FullName))
             {
-                sw.WriteLine(times1[0] + " " + times1[1]);
-                sw.WriteLine(times2[0] + " " + times2[1]);
+                sw.WriteLine("Running time of gcd of array method(measured by System.Diagnostics):");
+                sw.WriteLine(" Euclidean algorithm: {0,10} ticks.\n Stein's algorithm: {1,12} ticks.", times1[0],
+                    times1[1]);
+                sw.WriteLine("Running time of gcd of array method(measured by System.DateTime):");
+                sw.WriteLine(" Euclidean algorithm: {0,10} ticks.\n Stein's algorithm: {1,12} ticks.", times2[0],
+                    times2[1]);
             }
+
             Assert.Pass();
         }
     }

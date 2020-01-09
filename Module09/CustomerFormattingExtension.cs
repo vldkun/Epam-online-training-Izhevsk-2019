@@ -13,29 +13,20 @@ namespace Module09
         /// String representation of class customer.
         /// </summary>
         /// <param name="customer">Customer to convert his properties to string.</param>
+        /// <param name="format">
+        /// 
+        /// NN - name,
+        /// PP - contact phone,
+        /// RR - revenue.
+        /// </param>
         /// <returns>Returns string - customer's properties.</returns>
-        public static string StringRepresentation(this Customer customer)
+        public static string StringRepresentation(this Customer customer, string format)
         {
-            var strCustomerSb = new StringBuilder("Customer record:");
-            if (!string.IsNullOrEmpty(customer.Name))
-            {
-                strCustomerSb.Append(" " + customer.Name + ",");
-            }
-            if (!(customer.Revenue < 0))
-            {
-                strCustomerSb.Append(" " + string.Format(new CultureInfo("en-US", false), "{0:N}",customer.Revenue) + ",");
-            }
-            if (!string.IsNullOrEmpty(customer.ContactPhone))
-            {
-                strCustomerSb.Append(" " + customer.ContactPhone + ",");
-            }
-
-            if (strCustomerSb[strCustomerSb.Length - 1] == ',')
-            {
-                strCustomerSb.Remove(strCustomerSb.Length - 1, 1);
-            }
-
-            return strCustomerSb.ToString();
+            var result = format;
+            result = result.Replace("RR", string.Format(new CultureInfo("en-US", false), "{0:N}", customer.Revenue));
+            result = result.Replace("NN", customer.Name);
+            result = result.Replace("PP", customer.ContactPhone);
+            return result;
         }
     }
 }

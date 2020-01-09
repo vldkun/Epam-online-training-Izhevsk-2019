@@ -144,7 +144,7 @@ namespace Module06
         }
 
         /// <summary>
-        /// Measures computing 100 times GCD of two int numbers, one of them shouldn't be zero. Measure method 1.
+        /// Measures computing 100000 times GCD of two int numbers, one of them shouldn't be zero. Measure method 1.
         /// </summary>
         /// <param name="a">The first number.</param>
         /// <param name="b">The second number.</param>
@@ -153,15 +153,16 @@ namespace Module06
         {
             var calcTimes = new long[2];
             var watch1 = System.Diagnostics.Stopwatch.StartNew();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 var gcd = GcdEuclid(a, b);
             }
 
             watch1.Stop();
             calcTimes[0] = watch1.ElapsedTicks;
+
             var watch2 = System.Diagnostics.Stopwatch.StartNew();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 var gcd = GcdStein(a, b);
             }
@@ -172,7 +173,7 @@ namespace Module06
         }
 
         /// <summary>
-        /// Measures computing 100 times GCD of two int numbers, one of them shouldn't be zero. Measure method 2.
+        /// Measures computing 100000 times GCD of two int numbers, one of them shouldn't be zero. Measure method 2.
         /// </summary>
         /// <param name="a">The first number.</param>
         /// <param name="b">The second number.</param>
@@ -181,28 +182,27 @@ namespace Module06
         {
             var calcTimes = new long[2];
             var startTime1 = DateTime.Now;
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 var gcd = GcdEuclid(a, b);
             }
 
             var stopTime1 = DateTime.Now;
-            var timeSpan1 = stopTime1 - startTime1;
-            calcTimes[0] = timeSpan1.Ticks;
+            calcTimes[0] = stopTime1.Ticks - startTime1.Ticks;
+
             var startTime2 = DateTime.Now;
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 var gcd = GcdStein(a, b);
             }
 
             var stopTime2 = DateTime.Now;
-            var timeSpan2 = stopTime2 - startTime2;
-            calcTimes[1] = timeSpan2.Ticks;
+            calcTimes[1] = stopTime2.Ticks - startTime2.Ticks;
             return calcTimes;
         }
 
         /// <summary>
-        /// Measures computing 100 times GCD of many int numbers, one of them shouldn't be zero. Measure method 1.
+        /// Measures computing 100000 times GCD of many int numbers, one of them shouldn't be zero. Measure method 1.
         /// </summary>
         /// <param name="array">The array of numbers</param>
         /// <returns>Returns array of computing times in ticks. First element is time of Euclidean, second is time of Stein's.</returns>
@@ -210,15 +210,16 @@ namespace Module06
         {
             var calcTimes = new long[2];
             var watch1 = System.Diagnostics.Stopwatch.StartNew();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 var gcd = GcdEuclid(array);
             }
 
             watch1.Stop();
             calcTimes[0] = watch1.ElapsedTicks;
+
             var watch2 = System.Diagnostics.Stopwatch.StartNew();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 var gcd = GcdStein(array);
             }
@@ -229,7 +230,7 @@ namespace Module06
         }
 
         /// <summary>
-        /// Measures computing 100 times GCD of many int numbers, one of them shouldn't be zero. Measure method 2.
+        /// Measures computing 100000 times GCD of many int numbers, one of them shouldn't be zero. Measure method 2.
         /// </summary>
         /// <param name="array">The array of numbers</param>
         /// <returns>Returns array of computing times in ticks. First element is time of Euclidean, second is time of Stein's.</returns>
@@ -237,23 +238,22 @@ namespace Module06
         {
             var calcTimes = new long[2];
             var startTime1 = DateTime.Now;
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 var gcd = GcdEuclid(array);
             }
 
             var stopTime1 = DateTime.Now;
-            var timeSpan1 = stopTime1 - startTime1;
-            calcTimes[0] = timeSpan1.Ticks;
+            calcTimes[0] = stopTime1.Ticks - startTime1.Ticks;
+
             var startTime2 = DateTime.Now;
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 var gcd = GcdStein(array);
             }
 
             var stopTime2 = DateTime.Now;
-            var timeSpan2 = stopTime2 - startTime2;
-            calcTimes[1] = timeSpan2.Ticks;
+            calcTimes[1] = stopTime2.Ticks - startTime2.Ticks;
             return calcTimes;
         }
     }

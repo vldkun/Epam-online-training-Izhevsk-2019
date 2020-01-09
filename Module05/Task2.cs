@@ -7,27 +7,32 @@ namespace Module05
     /// </summary>
     public class Task2
     {
+        public enum SortMode
+        {
+            BySum,
+            ByMax,
+            ByMin
+        }
+
+        public enum Order
+        {
+            Increasing,
+            Decreasing
+        }
+
         /// <summary>
         /// Sorting rows of a matrix.
         /// </summary>
         /// <param name="array">Matrix - 2D array.</param>
         /// <param name="sortMode">
-        /// 0 - sort by sum of row,
-        /// 1 - sort by max element in row,
-        /// 2 - sort by min element in row.
+        /// Sorting by sum of row or by max or min element in row.
         /// </param>
         /// <param name="order">
-        /// 0 - sorting in increasing order,
-        /// 1 - sorting in decreasing order.
+        /// Sorting in increasing or decreasing order.
         /// </param>
         /// <returns>Returns new sorted matrix.</returns>
-        public static int[,] SortMatrix(int[,] array, int sortMode, int order)
+        public static int[,] SortMatrix(int[,] array, SortMode sortMode, Order order)
         {
-            if ((order != 0 && order != 1) || (sortMode < 0 || sortMode > 2))
-            {
-                throw new ArgumentOutOfRangeException();
-            }
-
             var rows = array.GetLength(0);
             var cols = array.GetLength(1);
             var resultArray = new int[rows, cols];
@@ -41,7 +46,7 @@ namespace Module05
 
             for (int i = 0; i < rows; i++)
             {
-                if (sortMode == 0)
+                if (sortMode == SortMode.BySum)
                 {
                     arrayOfKeys[i] = 0;
                     for (int j = 0; j < cols; j++)
@@ -54,23 +59,21 @@ namespace Module05
                     arrayOfKeys[i] = array[i, 0];
                     for (int j = 0; j < cols; j++)
                     {
-                        if ((sortMode == 1 && arrayOfKeys[i] < array[i, j]) ||
-                            (sortMode == 2 && arrayOfKeys[i] > array[i, j]))
+                        if ((sortMode == SortMode.ByMax && arrayOfKeys[i] < array[i, j]) ||
+                            (sortMode == SortMode.ByMin && arrayOfKeys[i] > array[i, j]))
                         {
                             arrayOfKeys[i] = array[i, j];
                         }
                     }
                 }
-
-
             }
 
             for (int i = 0; i < rows; i++)
             {
                 for (int j = rows - 1; j > i; j--)
                 {
-                    if ((order == 0 && arrayOfKeys[j - 1] > arrayOfKeys[j]) ||
-                        (order == 1 && arrayOfKeys[j - 1] < arrayOfKeys[j]))
+                    if ((order == Order.Increasing && arrayOfKeys[j - 1] > arrayOfKeys[j]) ||
+                        (order == Order.Decreasing && arrayOfKeys[j - 1] < arrayOfKeys[j]))
                     {
                         var tempKey = arrayOfKeys[j - 1];
                         arrayOfKeys[j - 1] = arrayOfKeys[j];
