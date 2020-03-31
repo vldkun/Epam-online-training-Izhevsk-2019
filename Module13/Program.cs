@@ -14,49 +14,13 @@ namespace Module13
 
             var filePath = ReadPath();
 
-            
+
             var testsTable = ReadTestsData(filePath);
-            IEnumerable<TestResult> query = testsTable.Select(t=>t.Value);
-            Console.WriteLine(
-                "Choose column to sort by.\nPress button 1 to sort by student name, 2 - by test name,\n 3 - by time of test, 4 - by score.");
-            while (true)
-            {
-                var key = Console.ReadKey();
-                if (key.Key == ConsoleKey.D1)
-                {
-                    Console.WriteLine("\nSorting by student name.");
-                    query = query.OrderBy(t => t.StudentName);
-                    break;
-                }
-
-                if (key.Key == ConsoleKey.D2)
-                {
-                    Console.WriteLine("\nSorting by test name.");
-                    query = query.OrderBy(t => t.TestName);
-                    break;
-                }
-
-                if (key.Key == ConsoleKey.D3)
-                {
-                    Console.WriteLine("\nSorting by time of test.");
-                    query = query.OrderBy(t => t.TestDate);
-                    break;
-                }
-
-                if (key.Key == ConsoleKey.D4)
-                {
-                    Console.WriteLine("\nSorting by by score.");
-                    query = query.OrderBy(t => t.TestScore);
-                    break;
-                }
-
-                Console.WriteLine("Incorrect column, try again.");
-            }
-
-            
+            IEnumerable<TestResult> query = testsTable.Select(t => t.Value);
 
             Console.WriteLine(
                 "Choose sorting order.\nPress button 1 to select ascending order, 2 - by descending order.");
+            bool isAscending = true;
             while (true)
             {
                 var key = Console.ReadKey();
@@ -69,11 +33,50 @@ namespace Module13
                 if (key.Key == ConsoleKey.D2)
                 {
                     Console.WriteLine("\nSorting in descending order.");
-                    query = query.OrderByDescending(t => t);
+                    isAscending = false;
                     break;
                 }
 
                 Console.WriteLine("Incorrect button, try again.");
+            }
+
+
+            Console.WriteLine(
+                "Choose column to sort by.\nPress button 1 to sort by student name, 2 - by test name,\n 3 - by time of test, 4 - by score.");
+            while (true)
+            {
+                var key = Console.ReadKey();
+                if (key.Key == ConsoleKey.D1)
+                {
+                    Console.WriteLine("\nSorting by student name.");
+                    query = isAscending
+                        ? query.OrderBy(t => t.StudentName)
+                        : query.OrderByDescending(t => t.StudentName);
+                    break;
+                }
+
+                if (key.Key == ConsoleKey.D2)
+                {
+                    Console.WriteLine("\nSorting by test name.");
+                    query = isAscending ? query.OrderBy(t => t.TestName) : query.OrderByDescending(t => t.TestName);
+                    break;
+                }
+
+                if (key.Key == ConsoleKey.D3)
+                {
+                    Console.WriteLine("\nSorting by time of test.");
+                    query = isAscending ? query.OrderBy(t => t.TestDate) : query.OrderByDescending(t => t.TestDate);
+                    break;
+                }
+
+                if (key.Key == ConsoleKey.D4)
+                {
+                    Console.WriteLine("\nSorting by by score.");
+                    query = isAscending ? query.OrderBy(t => t.TestScore) : query.OrderByDescending(t => t.TestScore);
+                    break;
+                }
+
+                Console.WriteLine("Incorrect column, try again.");
             }
 
             Console.WriteLine(
@@ -101,14 +104,15 @@ namespace Module13
                 Console.WriteLine("Incorrect number, try again.");
             }
 
-            Console.WriteLine("{0,20} | {1,15} | {2,8} | {3,1}", "Student name", "Test name", "Test date",
+            Console.WriteLine("{0,20} | {1,15} | {2,10} | {3,1}", "Student name", "Test name", "Test date",
                 "Test score");
             foreach (var line in query)
             {
-                Console.WriteLine("{0,20} | {1,15} | {2,8} | {3,1}", line.StudentName, line.TestName,
-                    line.TestDate.ToString(CultureInfo.CurrentCulture), line.TestScore);
+                Console.WriteLine("{0,20} | {1,15} | {2,10} | {3,1}", line.StudentName, line.TestName,
+                    line.TestDate.ToShortDateString(), line.TestScore);
             }
 
+            Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
         }
 
@@ -130,7 +134,7 @@ namespace Module13
             return filePath;
         }
 
-        private static SortedDictionary<int,TestResult> ReadTestsData(string path)
+        private static SortedDictionary<int, TestResult> ReadTestsData(string path)
         {
             var testsTable = new SortedDictionary<int, TestResult>();
             using (BinaryReader reader = new BinaryReader(File.OpenRead(path)))
